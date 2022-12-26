@@ -9,5 +9,9 @@ import Foundation
 
 class ContentModel: ObservableObject {
     
+    @Published var modules = [Module]()
     
+    init() {
+        self.modules = DataService.getLocalData()
+    }
 }
