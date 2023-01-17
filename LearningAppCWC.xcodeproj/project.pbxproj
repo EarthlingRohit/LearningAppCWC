@@ -16,6 +16,9 @@
 		F978EA10295266EE00B7C309 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = F978EA0E295266EE00B7C309 /* data.json */; };
 		F978EA12295269EB00B7C309 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F978EA11295269EB00B7C309 /* Models.swift */; };
 		F978EA1429526C9A00B7C309 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F978EA1329526C9A00B7C309 /* DataService.swift */; };
+		F9B15DCC29775D7A0090895C /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B15DCB29775D7A0090895C /* ContentDetailView.swift */; };
+		F9B15DCF2977629A0090895C /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B15DCE2977629A0090895C /* AVKit.framework */; };
+		F9B15DD1297763B50090895C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B15DD0297763B50090895C /* Constants.swift */; };
 		F9B6171C2970995200011207 /* HomeViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6171B2970995200011207 /* HomeViewRow.swift */; };
 		F9D05D0A297606ED00CA4480 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D05D09297606ED00CA4480 /* ContentView.swift */; };
 		F9D05D0C29760F0500CA4480 /* ContentViewRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D05D0B29760F0500CA4480 /* ContentViewRow.swift */; };
@@ -32,6 +35,9 @@
 		F978EA0E295266EE00B7C309 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		F978EA11295269EB00B7C309 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		F978EA1329526C9A00B7C309 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		F9B15DCB29775D7A0090895C /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
+		F9B15DCE2977629A0090895C /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		F9B15DD0297763B50090895C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F9B6171B2970995200011207 /* HomeViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewRow.swift; sourceTree = "<group>"; };
 		F9D05D09297606ED00CA4480 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F9D05D0B29760F0500CA4480 /* ContentViewRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewRow.swift; sourceTree = "<group>"; };
@@ -42,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9B15DCF2977629A0090895C /* AVKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +60,7 @@
 			children = (
 				F978E9F7295247D200B7C309 /* LearningAppCWC */,
 				F978E9F6295247D200B7C309 /* Products */,
+				F9B15DCD297762990090895C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +102,7 @@
 				F9B6171B2970995200011207 /* HomeViewRow.swift */,
 				F9D05D09297606ED00CA4480 /* ContentView.swift */,
 				F9D05D0B29760F0500CA4480 /* ContentViewRow.swift */,
+				F9B15DCB29775D7A0090895C /* ContentDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -119,6 +128,7 @@
 			children = (
 				F978EA0E295266EE00B7C309 /* data.json */,
 				F978EA0D295266EE00B7C309 /* style.html */,
+				F9B15DD0297763B50090895C /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -129,6 +139,14 @@
 				F978EA1329526C9A00B7C309 /* DataService.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F9B15DCD297762990090895C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F9B15DCE2977629A0090895C /* AVKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +225,8 @@
 				F978E9F9295247D200B7C309 /* LearningAppCWC.swift in Sources */,
 				F9D05D0A297606ED00CA4480 /* ContentView.swift in Sources */,
 				F978EA0C2952653A00B7C309 /* ContentModel.swift in Sources */,
+				F9B15DCC29775D7A0090895C /* ContentDetailView.swift in Sources */,
+				F9B15DD1297763B50090895C /* Constants.swift in Sources */,
 				F978EA12295269EB00B7C309 /* Models.swift in Sources */,
 				F9D05D0C29760F0500CA4480 /* ContentViewRow.swift in Sources */,
 				F9B6171C2970995200011207 /* HomeViewRow.swift in Sources */,
