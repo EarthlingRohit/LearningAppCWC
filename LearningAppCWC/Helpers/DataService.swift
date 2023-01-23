@@ -9,7 +9,7 @@ import Foundation
 
 class DataService {
     
-    var styleData: Data?
+    static var styleData: Data?
     
     // Function to parse JSON and Style data.
     static func getLocalData() -> [Module] {
@@ -33,7 +33,7 @@ class DataService {
         let styleUrl = Bundle.main.url(forResource: "style", withExtension: "html")
         do {
             // Read Style file into Data object.
-            let styleData = try Data(contentsOf: styleUrl!)
+            styleData = try Data(contentsOf: styleUrl!)
         } catch {
             print("Error parsing local Style data: \(error.localizedDescription)")
         }
