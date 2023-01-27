@@ -21,11 +21,16 @@ class ContentModel: ObservableObject {
     var currentLessonIndex = 0
     
     // Current lesson explanation.
-    @Published var lessonExplanation = NSAttributedString()
+    @Published var codeText = NSAttributedString()
     var styleData: Data?
+    
+    // Current test.
+    @Published var currentQuestion: Question?
+    var currentQuestionIndex = 0
     
     // Current selected content and test.
     @Published var currentContentSelected: Int?
+    @Published var currentTestSelected: Int?
     
     init() {
         self.modules = DataService.getLocalData()
@@ -59,7 +64,7 @@ class ContentModel: ObservableObject {
         }
         // Set current lesson.
         currentLesson = currentModule!.content.lessons[currentLessonIndex]
-        lessonExplanation = addStyling(currentLesson!.explanation)
+        codeText = addStyling(currentLesson!.explanation)
     }
     
     // Function checks for next lesson.
@@ -75,11 +80,25 @@ class ContentModel: ObservableObject {
         if currentLessonIndex < currentModule!.content.lessons.count {
             // Set currentLesson property.
             currentLesson = currentModule!.content.lessons[currentLessonIndex]
-            lessonExplanation = addStyling(currentLesson!.explanation)
+            codeText = addStyling(currentLesson!.explanation)
         } else {
             // Reset lesson state.
             currentLessonIndex = 0
             currentLesson = nil
+        }
+    }
+    
+    // Function checks for current test.
+    func beginTest(_ moduleId: Int) {
+        // Set the current module.
+        beginModule(moduleId)
+        // Set the current question index.
+        currentQuestionIndex = 0
+        // If there are questions, set the current question as the first question.
+        if currentModule?.test.questions.count ?? 0 > 0 {
+            currentQuestion = currentModule!.test.questions[currentQuestionIndex]
+            // Set question content.
+            codeText = addStyling(currentQuestion!.content)
         }
     }
     
