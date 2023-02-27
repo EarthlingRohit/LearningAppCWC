@@ -14,6 +14,22 @@ struct TestView: View {
     @State var numCorrect = 0
     @State var submitted = false
     
+    // Computed property for Submit/Next/Finish button for questions.
+    var buttonText: String {
+        // Check whether answer has been submitted.
+        if submitted == true {
+            if model.currentQuestionIndex + 1 == model.currentModule!.test.questions.count {
+                // This is last question, hence return Finish.
+                return "Finish"
+            } else {
+                // There is another question left.
+                return "Next"
+            }
+        } else {
+            return "Submit"
+        }
+    }
+    
     var body: some View {
         
         if model.currentQuestion != nil {
@@ -69,17 +85,27 @@ struct TestView: View {
                 }
                 // Submit button.
                 Button {
-                    // After submitted, change 'submitted' to 'true'.
-                    submitted = true
-                    // Check for correct answer, increment numCorrect counter if correct.
-                    if selectedAnswerIndex == model.currentQuestion!.correctIndex {
-                        numCorrect += 1
+                    // Check whether answer has been submitted.
+                    if submitted == true {
+                        // Answer has been submitted, move to next question.
+                        model.nextQuestion()
+                        // Reset properties.
+                        submitted = false
+                        selectedAnswerIndex = nil
+                    } else {
+                        // Submit the answer.
+                        // After submitted, change 'submitted' to 'true'.
+                        submitted = true
+                        // Check for correct answer, increment numCorrect counter if correct.
+                        if selectedAnswerIndex == model.currentQuestion!.correctIndex {
+                            numCorrect += 1
+                        }
                     }
                 } label: {
                     ZStack() {
                         RectangleCard(color: .green)
                             .frame(height: 48.0)
-                        Text("Submit")
+                        Text(buttonText)
                             .foregroundColor(.white)
                             .bold()
                     }
@@ -92,8 +118,10 @@ struct TestView: View {
     }
 }
 
+/*
 struct TestView_Previews: PreviewProvider {
     static var previews: some View {
         TestView()
     }
 }
+*/

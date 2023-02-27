@@ -78,7 +78,7 @@ class ContentModel: ObservableObject {
         currentLessonIndex += 1
         // Check whether lesson index is in range.
         if currentLessonIndex < currentModule!.content.lessons.count {
-            // Set currentLesson property.
+            // Set current lesson.
             currentLesson = currentModule!.content.lessons[currentLessonIndex]
             codeText = addStyling(currentLesson!.explanation)
         } else {
@@ -99,6 +99,22 @@ class ContentModel: ObservableObject {
             currentQuestion = currentModule!.test.questions[currentQuestionIndex]
             // Set question content.
             codeText = addStyling(currentQuestion!.content)
+        }
+    }
+    
+    // Function to advance to next test question.
+    func nextQuestion() {
+        // Increase question index.
+        currentQuestionIndex += 1
+        // Check whether question index is in range.
+        if currentQuestionIndex < currentModule!.test.questions.count {
+            // Set current question.
+            currentQuestion = currentModule!.test.questions[currentQuestionIndex]
+            codeText = addStyling(currentQuestion!.content)
+        } else {
+            // Reset question state.
+            currentQuestionIndex = 0
+            currentQuestion = nil
         }
     }
     
