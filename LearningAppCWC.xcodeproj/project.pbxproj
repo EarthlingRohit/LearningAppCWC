@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F901E3EB2979F73D00532553 /* CodeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F901E3EA2979F73D00532553 /* CodeTextView.swift */; };
+		F94BFC7529AD4EC300EEA969 /* TestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94BFC7429AD4EC300EEA969 /* TestResultView.swift */; };
 		F95380532984700700682F34 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95380522984700700682F34 /* TestView.swift */; };
 		F978E9F9295247D200B7C309 /* LearningAppCWC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F978E9F8295247D200B7C309 /* LearningAppCWC.swift */; };
 		F978E9FB295247D200B7C309 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F978E9FA295247D200B7C309 /* HomeView.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		F901E3EA2979F73D00532553 /* CodeTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTextView.swift; sourceTree = "<group>"; };
+		F94BFC7429AD4EC300EEA969 /* TestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestResultView.swift; sourceTree = "<group>"; };
 		F95380522984700700682F34 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		F978E9F5295247D200B7C309 /* LearningAppCWC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearningAppCWC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F978E9F8295247D200B7C309 /* LearningAppCWC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningAppCWC.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				F9D05D0B29760F0500CA4480 /* ContentViewRow.swift */,
 				F9B15DCB29775D7A0090895C /* ContentDetailView.swift */,
 				F95380522984700700682F34 /* TestView.swift */,
+				F94BFC7429AD4EC300EEA969 /* TestResultView.swift */,
 				F901E3EA2979F73D00532553 /* CodeTextView.swift */,
 				F9EF48C329838A3C0048A7D7 /* RectangleCard.swift */,
 			);
@@ -243,6 +246,7 @@
 				F978EA1429526C9A00B7C309 /* DataService.swift in Sources */,
 				F95380532984700700682F34 /* TestView.swift in Sources */,
 				F901E3EB2979F73D00532553 /* CodeTextView.swift in Sources */,
+				F94BFC7529AD4EC300EEA969 /* TestResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
