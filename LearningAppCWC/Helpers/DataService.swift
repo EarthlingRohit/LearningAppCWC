@@ -47,7 +47,7 @@ class DataService {
         let url = URL(string: urlString)
         guard url != nil else {
             // Could not create URL object.
-            return
+            return url
         }
         // Create URL request object.
         let request = URLRequest(url: url!)
