@@ -13,7 +13,6 @@ class DataService {
     
     // Function to parse JSON and Style data.
     static func getLocalData() -> [Module] {
-        
         // Parse JSON data.
         // Get URL to local JSON file.
         let jsonUrl = Bundle.main.url(forResource: "data", withExtension: "json")
@@ -27,7 +26,6 @@ class DataService {
         } catch {
             print("Error parsing local JSON data: \(error.localizedDescription)")
         }
-        
         // Parse Style data.
         // Get URL to local Style file.
         let styleUrl = Bundle.main.url(forResource: "style", withExtension: "html")
@@ -37,7 +35,6 @@ class DataService {
         } catch {
             print("Error parsing local Style data: \(error.localizedDescription)")
         }
-        
         // Return empty array of modules in case creating Data object fails.
         return [Module]()
     }
