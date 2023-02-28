@@ -12,7 +12,7 @@ class DataService {
     var styleData: Data?
     
     // Function to parse JSON and Style data.
-    static func getLocalData() -> [Module] {
+    func getLocalData() -> [Module] {
         // Parse JSON data.
         // Get URL to local JSON file.
         let jsonUrl = Bundle.main.url(forResource: "data", withExtension: "json")
@@ -40,7 +40,7 @@ class DataService {
     }
     
     // Function to get remote JSON data.
-    static func getRemoteData() -> [Module] {
+    func getRemoteData() -> [Module] {
         // String path
         let urlString = "https://rohitsocmed.github.io/LearningAppCWC/data2.json"
         // Create URL object.
