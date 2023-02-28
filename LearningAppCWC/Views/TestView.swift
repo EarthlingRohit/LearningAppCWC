@@ -13,6 +13,7 @@ struct TestView: View {
     @State var selectedAnswerIndex: Int?
     @State var numCorrect = 0
     @State var submitted = false
+    @State var showResults = false
     
     // Computed property for Submit/Next/Finish button for questions.
     var buttonText: String {
@@ -32,7 +33,7 @@ struct TestView: View {
     
     var body: some View {
         
-        if model.currentQuestion != nil {
+        if (model.currentQuestion != nil && showResults == false) {
             
             VStack(alignment: .leading) {
                 // Question number.
@@ -87,11 +88,17 @@ struct TestView: View {
                 Button {
                     // Check whether answer has been submitted.
                     if submitted == true {
-                        // Answer has been submitted, move to next question.
-                        model.nextQuestion()
-                        // Reset properties.
-                        submitted = false
-                        selectedAnswerIndex = nil
+                        // Check whether this is the last question.
+                        if model.currentQuestionIndex + 1 == model.currentModule!.test.questions.count {
+                            // Show the results.
+                            showResults = true
+                        } else {
+                            // Answer has been submitted, move to next question.
+                            model.nextQuestion()
+                            // Reset properties.
+                            submitted = false
+                            selectedAnswerIndex = nil
+                        }
                     } else {
                         // Submit the answer.
                         // After submitted, change 'submitted' to 'true'.
@@ -115,9 +122,11 @@ struct TestView: View {
             }
             .navigationTitle("\(model.currentModule?.category ?? "") Test")
         }
-        else {
+        else if showResults == true {
             // If current question is nil, we show results view.
-            TestResultView(numCorrectAns: numCorrectAns)
+            TestResultView(numCorrect: numCorrect)
+        } else {
+            ProgressView()
         }
     }
 }

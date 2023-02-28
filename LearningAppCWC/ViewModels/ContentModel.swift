@@ -33,7 +33,10 @@ class ContentModel: ObservableObject {
     @Published var currentTestSelected: Int?
     
     init() {
+        // Parse local JSON data.
         self.modules = DataService.getLocalData()
+        // Download and parse remote JSON data.
+        self.modules += DataService.getRemoteData()
     }
     
     // MARK: Module Navigation methods.

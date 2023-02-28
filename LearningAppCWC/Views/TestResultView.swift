@@ -10,13 +10,13 @@ import SwiftUI
 struct TestResultView: View {
     
     @EnvironmentObject var model: ContentModel
-    var numCorrectAns: Int
+    var numCorrect: Int
     
     var resultHeading: String {
         guard model.currentModule != nil else {
             return ""
         }
-        let pct = Double(numCorrectAns) / Double(model.currentModule!.test.questions.count)
+        let pct = Double(numCorrect) / Double(model.currentModule!.test.questions.count)
         if pct > 0.5 {
             return "Awesome"
         } else if pct > 0.2 {
@@ -32,7 +32,7 @@ struct TestResultView: View {
             Text(resultHeading)
                 .font(.title)
             Spacer()
-            Text("You got \(numCorrectAns) out of \(model.currentModule?.test.questions.count ?? 0) questions correct.")
+            Text("You got \(numCorrect) out of \(model.currentModule?.test.questions.count ?? 0) questions correct.")
             Spacer()
             Button {
                 // Send user back to Home View.
