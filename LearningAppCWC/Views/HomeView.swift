@@ -40,6 +40,7 @@ struct HomeView: View {
                                     HomeViewRow(image: module.test.image, title: "\(module.category) Test", description: module.test.description, count: "\(module.test.questions.count) Lessons", time: module.test.time)
                                 }
                             }
+                            .padding(.bottom, 15.0)
                         }
                     }
                     .accentColor(.black)
@@ -47,6 +48,16 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("Get Started")
+            .onChange(of: model.currentContentSelected) { changedValue in
+                if changedValue == nil {
+                    model.currentModule = nil
+                }
+            }
+            .onChange(of: model.currentTestSelected) { changedValue in
+                if changedValue == nil {
+                    model.currentModule = nil
+                }
+            }
         }
         .navigationViewStyle(.stack)
     }

@@ -9,10 +9,10 @@ import Foundation
 
 class DataService {
     
-    var styleData: Data?
+    static var styleData: Data?
     
     // Function to parse JSON and Style data.
-    func getLocalData() -> [Module] {
+    static func getLocalData() -> [Module] {
         // Parse JSON data.
         // Get URL to local JSON file.
         let jsonUrl = Bundle.main.url(forResource: "data", withExtension: "json")
@@ -31,7 +31,7 @@ class DataService {
         let styleUrl = Bundle.main.url(forResource: "style", withExtension: "html")
         do {
             // Read Style file into Data object.
-            let styleData = try Data(contentsOf: styleUrl!)
+            styleData = try Data(contentsOf: styleUrl!)
         } catch {
             print("Error parsing local Style data: \(error.localizedDescription)")
         }
@@ -40,14 +40,14 @@ class DataService {
     }
     
     // Function to get remote JSON data.
-    func getRemoteData() -> [Module] {
+    static func getRemoteData(completion: @escaping ([Module]) -> Void) {
         // String path
         let urlString = "https://rohitsocmed.github.io/LearningAppCWC/data2.json"
         // Create URL object.
         let url = URL(string: urlString)
         guard url != nil else {
             // Could not create URL object.
-            return url
+            return
         }
         // Create URL request object.
         let request = URLRequest(url: url!)
@@ -62,7 +62,9 @@ class DataService {
                 // Decode data with JSON Decoder into an array of modules.
                 let decoder = JSONDecoder()
                 let modules = try decoder.decode([Module].self, from: data!)
-                return modules
+                DispatchQueue.main.async {
+                    completion(modules)
+                }
             } catch {
                 // Could not parse JSON data.
                 print("Error parsing remote JSON data: \(error.localizedDescription)")
@@ -70,7 +72,5 @@ class DataService {
         }
         // Start data task.
         dataTask.resume()
-        // Return empty array of modules in case creating Data object fails.
-        return [Module]()
     }
 }

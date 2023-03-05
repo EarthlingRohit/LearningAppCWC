@@ -36,7 +36,9 @@ class ContentModel: ObservableObject {
         // Parse local JSON data.
         self.modules = DataService.getLocalData()
         // Download and parse remote JSON data.
-        self.modules += DataService.getRemoteData()
+        DataService.getRemoteData { moduleData in
+            self.modules += moduleData
+        }
     }
     
     // MARK: Module Navigation methods.
@@ -72,6 +74,9 @@ class ContentModel: ObservableObject {
     
     // Function checks for next lesson.
     func hasNextLesson() -> Bool {
+        guard currentModule != nil else {
+            return false
+        }
         return (currentLessonIndex + 1 < currentModule!.content.lessons.count)
     }
     
@@ -81,9 +86,11 @@ class ContentModel: ObservableObject {
         currentLessonIndex += 1
         // Check whether lesson index is in range.
         if currentLessonIndex < currentModule!.content.lessons.count {
-            // Set current lesson.
-            currentLesson = currentModule!.content.lessons[currentLessonIndex]
-            codeText = addStyling(currentLesson!.explanation)
+            DispatchQueue.main.async {
+                // Set current lesson.
+                self.currentLesson = self.currentModule!.content.lessons[self.currentLessonIndex]
+                self.codeText = self.addStyling(self.currentLesson!.explanation)
+            }
         } else {
             // Reset lesson state.
             currentLessonIndex = 0
@@ -111,9 +118,11 @@ class ContentModel: ObservableObject {
         currentQuestionIndex += 1
         // Check whether question index is in range.
         if currentQuestionIndex < currentModule!.test.questions.count {
-            // Set current question.
-            currentQuestion = currentModule!.test.questions[currentQuestionIndex]
-            codeText = addStyling(currentQuestion!.content)
+            DispatchQueue.main.async {
+                // Set current question.
+                self.currentQuestion = self.currentModule!.test.questions[self.currentQuestionIndex]
+                self.codeText = self.addStyling(self.currentQuestion!.content)
+            }
         } else {
             // Reset question state.
             currentQuestionIndex = 0
